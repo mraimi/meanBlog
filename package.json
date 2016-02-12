@@ -1,0 +1,21 @@
+{
+  "name": "mean_blog",
+  "version": "1.0.0",
+  "description": "blog built using a Mongo, Express, Angular, Node stack",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mraimi/meanBlog.git"
+  },
+  "author": "Michael Raimi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mraimi/meanBlog/issues"
+  },
+  "homepage": "https://github.com/mraimi/meanBlog#readme"
+}
