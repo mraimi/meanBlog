@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "blog built using a Mongo, Express, Angular, Node stack",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "latest",
+    "grunt": "latest"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
