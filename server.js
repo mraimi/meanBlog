@@ -14,9 +14,14 @@ var helloWorld = function(req, res, next) {
     res.end("Hello World");
 };
 
+var goodbyeWorld = function(req, res, next){
+    res.setHeader('Content-Type', 'text/plain');
+    res.end("Goodbye World");
+};
+
 app.use(logger);
-app.use(helloWorld);
-// Register middleware with Connect application
+app.use('/hello', helloWorld);
+app.use('/goodbye', goodbyeWorld);
 
 app.listen(3000);
 
