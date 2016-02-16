@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.4",
-    "grunt": "latest"
+    "grunt": "latest",
+    "connect": "latest"
   },
   "devDependencies": {},
   "scripts": {
