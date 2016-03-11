@@ -5,7 +5,10 @@ var EntrySchema = new Schema({
     title: String,
     description: String,
     date: String,
-    author: String,
+    author: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     body: String,
     tags: String
 });
