@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    crypto = require('crypto');
 
 var UserSchema = new Schema({
     firstName : String,
@@ -53,12 +54,14 @@ var UserSchema = new Schema({
 UserSchema.statics.findOnebyUsername = function(username, callback) {
     this.findOne({username: new RegExp(username, 'i')}, callback);
 };
+
 UserSchema.virtual('fullName').get(function(){
     return this.firstName + ' ' + this.lastName;
 });
+
 UserSchema.pre('save', function(next){
     if (this.password) {
-        this.salt = new Buffer(crypto.randombytes(16).toString('base64'), 'base64');
+        this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
         this.password = this.hashPassword(this.password)
     }
 

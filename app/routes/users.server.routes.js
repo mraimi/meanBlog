@@ -1,14 +1,64 @@
-var users = require('../controllers/user.server.controller.js');
+// Invoke 'strict' JavaScript mode
+'use strict';
 
-module.exports = function(app){
-    app.route('/users')
-        .get(users.list)
-        .post(users.create);
+// Load the module dependencies
+var users = require('../../app/controllers/user.server.controller'),
+    passport = require('passport');
 
-    app.route('/users/:userId')
-        .get(users.read)
-        .put(users.update)
-        .delete(users.delete);
+module.exports = function(app) {
+    // Set up the 'signup' routes
+    app.route('/signup')
+        .get(users.renderSignup)
+        .post(users.signup);
 
-    app.param('userId', users.userById);
+// Define the routes module' method
+// Set up the 'signin' routes
+//    app.route('/signin')
+//        .get(users.renderSignin)
+//        .post(passport.authenticate('local', {
+//            successRedirect: '/',
+//            failureRedirect: '/signin',
+//            failureFlash: true
+//        }));
+
+    app.route('/signin').get(users.renderSignin);
+    app.post('/signin',
+        passport.authenticate('local', {
+            successRedirect: '/',
+            failureRedirect: '/signin',
+            failureFlash: true
+        }));
+    //// Set up the Facebook OAuth routes
+    //app.get('/oauth/facebook', passport.authenticate('facebook', {
+    //    failureRedirect: '/signin'
+    //}));
+    //app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
+    //    failureRedirect: '/signin',
+    //    successRedirect: '/'
+    //}));
+    //
+    //// Set up the Twitter OAuth routes
+    //app.get('/oauth/twitter', passport.authenticate('twitter', {
+    //    failureRedirect: '/signin'
+    //}));
+    //app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
+    //    failureRedirect: '/signin',
+    //    successRedirect: '/'
+    //}));
+    //
+    //// Set up the Google OAuth routes
+    //app.get('/oauth/google', passport.authenticate('google', {
+    //    scope: [
+    //        'https://www.googleapis.com/auth/userinfo.profile',
+    //        'https://www.googleapis.com/auth/userinfo.email'
+    //    ],
+    //    failureRedirect: '/signin'
+    //}));
+    //app.get('/oauth/google/callback', passport.authenticate('google', {
+    //    failureRedirect: '/signin',
+    //    successRedirect: '/'
+    //}));
+
+    // Set up the 'signout' route
+    app.get('/signout', users.signout);
 };
