@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    Article = require('Article');
+    Article = mongoose.model('Article');
 
 var getErrorMessage = function(err) {
     if (err.errors){

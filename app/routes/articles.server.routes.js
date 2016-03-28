@@ -1,5 +1,5 @@
-var users = require('../controllers/users.server.controller'),
-    articles = require('../controllers/articles.server.controller');
+var users = require('../../app/controllers/user.server.controller'),
+    articles = require('../../app/controllers/articles.server.controller');
 
 module.exports = function(app) {
     app.route('/api/articles')
