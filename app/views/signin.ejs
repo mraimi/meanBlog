@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Use the 'title' property to render a page title  -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.1.js"></script>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	<title><%= title %></title>
 </head>
 <body>
@@ -12,16 +15,16 @@
 
 	<!-- Render the signin form  -->
 	<form action="/signin" method="post">
-		<div>
+		<div class="form-group">
 			<label>Username:</label>
 			<input type="text" name="username" />
 		</div>
-		<div>
+		<div class="form-group">
 			<label>Password	:</label>
 			<input type="password" name="password" />
 		</div>
 		<div>
-			<input type="submit" value="Sign In" />
+			<input class="btn btn-default" type="submit" value="Sign In" />
 		</div>
 	</form>
 

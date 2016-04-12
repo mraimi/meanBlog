@@ -1,0 +1,29 @@
+<!-- The list articles view -->
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.1.js"></script>
+	<script src="../controllers/articles.client.controller.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<title><%= title %></title>
+</head>
+<section data-ng-controller="ArticlesController" data-ng-init="find()">
+
+	<div class="container-fluid">
+		<div data-ng-repeat="article in filteredArticles">
+			<h1 data-ng-bind="article.title"></h1>
+			<div class="well">
+				<small data-ng-bind="article.created | date:'medium'"></small>
+				<small>/</small>
+				<small data-ng-bind="article.creator.fullName"></small>
+				<p data-ng-bind="article.content"></p>
+				<uib-pagination ng-model="currentPage" total-items="totalItems" page="currentPage" on-select-page="setPage(page)" class="pagination-sm" boundary-links="true"></uib-pagination>
+			</div>
+		</div>
+	</div>
+
+	<div data-ng-hide="!articles || articles.length">
+		No articles yet, why don't you <a href="/#!/articles/create">create one</a>?
+	</div>
+
+</section>
