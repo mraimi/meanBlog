@@ -17,9 +17,9 @@
 				<small>/</small>
 				<small data-ng-bind="article.creator.fullName"></small>
 				<p data-ng-bind="article.content"></p>
-				<uib-pagination ng-model="currentPage" total-items="totalItems" page="currentPage" on-select-page="setPage(page)" class="pagination-sm" boundary-links="true"></uib-pagination>
 			</div>
 		</div>
+		<uib-pagination class="pagination-sm" ng-model="currentPage" total-items="totalItems" items-per-page="itemsPerPage"></uib-pagination>
 	</div>
 
 	<div data-ng-hide="!articles || articles.length">

@@ -24,22 +24,21 @@ angular.module('articles').controller('ArticlesController', ['$scope',
             $scope.articles = Articles.query();
             $scope.itemsPerPage = 1;
             $scope.currentPage = 1;
-            $scope.pageCount = function () {
-                return Math.ceil($scope.articles.length / $scope.itemsPerPage);
+
+            $scope.numPages = function(){
+                return Math.ceil($scope.articles.length/$scope.itemsPerPage);
             };
-
-            $scope.articles.$promise.then(function () {
-                $scope.totalItems = $scope.articles.length;
-                $scope.$watch('currentPage + itemsPerPage', function() {
-                    var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
-                        end = begin + $scope.itemsPerPage;
-
+            $scope.articles.$promise.then(function() {
+                $scope.$watch("currentPage", function(){
+                    $scope.totalItems = $scope.articles.length;
+                    var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
+                    var end = begin + $scope.itemsPerPage;
                     $scope.filteredArticles = $scope.articles.slice(begin, end);
                 });
             });
         };
 
-        $scope.setPage = function(pageNo) {
+        $scope.selectPage = function(pageNo) {
             $scope.currentPage = pageNo;
         };
 
