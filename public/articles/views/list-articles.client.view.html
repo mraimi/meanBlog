@@ -17,8 +17,13 @@
 				<small>/</small>
 				<small data-ng-bind="article.creator.fullName"></small>
 				<p data-ng-bind="article.content"></p>
+				<div data-ng-show="authentication.user._id == article.creator._id">
+					<a href="/#!/articles/{{article._id}}/edit">edit</a>
+					<a href="#" data-ng-click="delete();">delete</a>
+				</div>
 			</div>
 		</div>
+		<label>Entries per page: <input type="text" ng-model="itemsPerPage"/></label><br />
 		<uib-pagination class="pagination-sm" ng-model="currentPage" total-items="totalItems" items-per-page="itemsPerPage"></uib-pagination>
 	</div>
 

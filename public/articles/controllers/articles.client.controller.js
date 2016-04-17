@@ -29,7 +29,7 @@ angular.module('articles').controller('ArticlesController', ['$scope',
                 return Math.ceil($scope.articles.length/$scope.itemsPerPage);
             };
             $scope.articles.$promise.then(function() {
-                $scope.$watch("currentPage", function(){
+                $scope.$watch("currentPage + itemsPerPage", function(){
                     $scope.totalItems = $scope.articles.length;
                     var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
                     var end = begin + $scope.itemsPerPage;
@@ -40,6 +40,10 @@ angular.module('articles').controller('ArticlesController', ['$scope',
 
         $scope.selectPage = function(pageNo) {
             $scope.currentPage = pageNo;
+        };
+
+        $scope.setItemsPerPage = function(num) {
+            $scope.itemsPerPage = num;
         };
 
         $scope.findOne = function(){
